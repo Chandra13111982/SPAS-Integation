@@ -10,6 +10,7 @@ page 50120 "Posted Sales API"
     PageType = API;
     SourceTable = "Sales Invoice Header";
     Editable = true;
+    ODataKeyFields = SystemId;
     Permissions = tabledata "Sales Invoice Header" = rimd;
 
     layout

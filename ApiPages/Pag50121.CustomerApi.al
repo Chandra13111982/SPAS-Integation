@@ -10,6 +10,7 @@ page 50121 CustomerApi
     PageType = API;
     SourceTable = Customer;
     Editable = true;
+    ODataKeyFields = SystemId;
     Permissions = tabledata Customer = rimd;
 
 
@@ -31,9 +32,13 @@ page 50121 CustomerApi
                 {
                     Caption = 'Address';
                 }
-                field(id; Rec."Spas Id")
+                field(spasId; Rec."Spas Id")
                 {
                     Caption = 'Spas Id';
+                }
+                field(id; Rec.SystemId)
+                {
+                    Caption = 'ID';
                 }
                 field(spasSync; Rec."Spas Sync")
                 {
@@ -47,7 +52,7 @@ page 50121 CustomerApi
                 {
                     Caption = 'Phone No.';
                 }
-                field(EmailAddress; Rec."E-Mail")
+                field(emailAddress; Rec."E-Mail")
                 {
                     Caption = 'Email';
                 }
