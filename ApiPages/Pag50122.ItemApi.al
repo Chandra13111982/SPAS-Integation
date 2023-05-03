@@ -1,4 +1,4 @@
-page 50122 Items
+page 50122 ItemApi
 {
     APIGroup = 'spasintegration';
     APIPublisher = 'bizsoft';
@@ -10,7 +10,7 @@ page 50122 Items
     PageType = API;
     SourceTable = Item;
     Editable = true;
-    // ODataKeyFields = SystemId;
+    ODataKeyFields = SystemId;
     Permissions = tabledata Item = rimd;
 
     layout
@@ -19,6 +19,10 @@ page 50122 Items
         {
             repeater(General)
             {
+                field(spasSync; Rec."Spas Sync")
+                {
+                    Caption = 'Spas Sync';
+                }
                 field(itemno; Rec."No.")
                 {
                     Caption = 'No.';
@@ -27,13 +31,13 @@ page 50122 Items
                 {
                     Caption = 'Description';
                 }
-                field(description2; Rec."Description 2")
-                {
-                    Caption = 'Description 2';
-                }
                 field("type"; Rec."Type")
                 {
                     Caption = 'Type';
+                }
+                field(id; Rec.SystemId)
+                {
+                    Caption = 'Id';
                 }
             }
         }
