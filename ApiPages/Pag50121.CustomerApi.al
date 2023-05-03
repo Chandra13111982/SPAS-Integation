@@ -44,6 +44,10 @@ page 50121 CustomerApi
                 {
                     Caption = 'Spas Sync';
                 }
+                field(contactPersonName; Rec.Contact)
+                {
+                    Caption = 'Contact Person';
+                }
                 field(mobileNo; Rec."Mobile Phone No.")
                 {
                     Caption = 'Mobile Phone No.';
