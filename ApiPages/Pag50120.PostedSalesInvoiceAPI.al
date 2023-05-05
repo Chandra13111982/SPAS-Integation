@@ -27,6 +27,10 @@ page 50120 "Posted Sales API"
                 {
                     Caption = 'SystemId';
                 }
+                field(dueDate; Rec."Due Date")
+                {
+                    Caption = 'Due Date';
+                }
                 field(systemCreatedAt; Rec.SystemCreatedAt)
                 {
                     Caption = 'SystemCreatedAt';
@@ -35,14 +39,7 @@ page 50120 "Posted Sales API"
                 {
                     Caption = 'SystemCreatedBy';
                 }
-                field(systemModifiedAt; Rec.SystemModifiedAt)
-                {
-                    Caption = 'SystemModifiedAt';
-                }
-                field(systemModifiedBy; Rec.SystemModifiedBy)
-                {
-                    Caption = 'SystemModifiedBy';
-                }
+
                 field(postingDescription; Rec."Posting Description")
                 {
                     Caption = 'Posting Description';
@@ -59,15 +56,16 @@ page 50120 "Posted Sales API"
                 {
                     Caption = 'Bill-to Address';
                 }
+                field(spasId; Rec."Spas Id")
+                {
+                    Caption = 'Spas Id';
+                }
+                field(spasSync; Rec."Spas Sync")
+                {
+                    Caption = 'Spas Sync';
+                }
 
-                field(amountIncludingVAT; Rec."Amount Including VAT")
-                {
-                    Caption = 'Amount Including VAT';
-                }
-                field(amount; Rec.Amount)
-                {
-                    Caption = 'Amount';
-                }
+
                 field(salespersonCode; Rec."Salesperson Code")
                 {
                     Caption = 'Salesperson Code';
@@ -76,7 +74,6 @@ page 50120 "Posted Sales API"
                 {
                     Caption = 'Invoice Date';
                 }
-
             }
         }
     }

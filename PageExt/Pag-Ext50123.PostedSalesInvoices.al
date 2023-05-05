@@ -1,9 +1,9 @@
-pageextension 50121 Customers extends "Customer List"
+pageextension 50123 "Posted Sales Invoices" extends "Posted Sales Invoices"
 {
 
     layout
     {
-        addafter("Search Name")
+        addafter("No. Printed")
         {
             field("Spas Id"; Rec."Spas Id")
             {
@@ -16,7 +16,9 @@ pageextension 50121 Customers extends "Customer List"
                 ApplicationArea = all;
             }
         }
+
     }
+
     actions
     {
         addafter("Co&mments")
@@ -24,22 +26,20 @@ pageextension 50121 Customers extends "Customer List"
             action("Set to Synch Pending")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedCategory = Process;
                 Image = OutlookSyncFields;
+
                 trigger OnAction()
                 var
-                    Customers: Record Customer;
+                    SalesInvoiceHeader: Record "Sales Invoice Header";
+                    SpasIntMgmt: Codeunit SpasIntegrationManagement;
                 begin
-                    CurrPage.SetSelectionFilter(Customers);
-                    if Customers.FindFirst() then
-                        repeat
-                            Customers."Spas Sync" := Customers."Spas Sync"::Pending;
-                            Customers.Modify();
-                        until Customers.Next() = 0;
+                    CurrPage.SetSelectionFilter(SalesInvoiceHeader);
+                    SpasIntMgmt.SetSpasSyncToPending(SalesInvoiceHeader);
                     CurrPage.Update();
                 end;
             }
         }
     }
+
+
 }

@@ -1,5 +1,6 @@
 codeunit 50120 SpasIntegrationManagement
 {
+    Permissions = tabledata "Sales Invoice Header" = rimd, tabledata "Sales Invoice Line" = rimd;
     //     finance.user@dthousing.onmicrosoft.com
     // F!n@nc3!@#$%
 
@@ -119,6 +120,23 @@ codeunit 50120 SpasIntegrationManagement
 
     end;
 
+    procedure SetSpasSyncToPending(var SalesInvoiceHeader: Record "Sales Invoice Header")
+    var
+        SalesInvoiceLine: Record "Sales Invoice Line";
+    begin
+        if SalesInvoiceHeader.FindFirst() then
+            repeat
+                SalesInvoiceHeader."Spas Sync" := SalesInvoiceHeader."Spas Sync"::Pending;
+                SalesInvoiceLine.Reset();
+                SalesInvoiceLine.SetRange("Document No.", SalesInvoiceHeader."No.");
+                If SalesInvoiceLine.FindFirst() then
+                    repeat
+                        SalesInvoiceLine."Spas Sync" := SalesInvoiceLine."Spas Sync"::Pending;
+                        SalesInvoiceLine.Modify();
+                    until SalesInvoiceLine.Next() = 0;
+                SalesInvoiceHeader.Modify();
+            until SalesInvoiceHeader.Next() = 0;
 
+    end;
 
 }
