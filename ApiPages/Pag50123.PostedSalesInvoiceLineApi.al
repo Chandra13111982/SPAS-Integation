@@ -5,8 +5,8 @@ page 50123 "Posted Sales Invoice Line Api"
     APIVersion = 'v2.0';
     Caption = 'postedSalesInvoiceLineApi';
     DelayedInsert = true;
-    EntityName = 'postedsalesinvoiceline';
-    EntitySetName = 'postedsalesinvoiceline';
+    EntityName = 'salesLines';
+    EntitySetName = 'salesLines';
     PageType = API;
     SourceTable = "Sales Invoice Line";
     ODataKeyFields = SystemId;
@@ -24,11 +24,20 @@ page 50123 "Posted Sales Invoice Line Api"
                 {
                     Caption = 'Document No.';
                 }
+
+                field(spasId; Rec."Spas Id")
+                {
+                    Caption = 'Spas Id';
+                }
+                field(spasSync; Rec."Spas Sync")
+                {
+                    Caption = 'Spas Sync';
+                }
                 field(systemId; Rec.SystemId)
                 {
 
                 }
-                field(no; Rec."No.")
+                field(itemNo; Rec."No.")
                 {
                     Caption = 'No.';
                 }
@@ -40,19 +49,17 @@ page 50123 "Posted Sales Invoice Line Api"
                 {
                     Caption = 'Unit Price';
                 }
-                field(amount; Rec.Amount)
+                field(grossAmount; Rec."Line Amount" - Rec."Line Discount Amount")
                 {
-                    Caption = 'Amount';
+                    Caption = 'Gross Amount';
+                    Editable = false;
                 }
-                field(invDiscountAmount; Rec."Inv. Discount Amount")
-                {
-                    Caption = 'Inv. Discount Amount';
-                }
-                field(lineDiscountAmount; Rec."Line Discount Amount")
+
+                field(discountAmount; Rec."Line Discount Amount")
                 {
                     Caption = 'Line Discount Amount';
                 }
-                field(lineDiscount; Rec."Line Discount %")
+                field(discountPercent; Rec."Line Discount %")
                 {
                     Caption = 'Line Discount %';
                 }
@@ -64,18 +71,25 @@ page 50123 "Posted Sales Invoice Line Api"
                 {
                     Caption = 'Unit of Measure';
                 }
-                field(amountIncludingVAT; Rec."Amount Including VAT")
+                field(amountWithVat; Rec."Amount Including VAT")
                 {
                     Caption = 'Amount Including VAT';
                 }
-                field(lineAmount; Rec."Line Amount")
+                field(VatAmount; Rec."Amount Including VAT" - Rec.Amount)
                 {
-                    Caption = 'Line Amount';
+                    Caption = 'Amount Including VAT';
+                    Editable = false;
                 }
-                field(vat; Rec."VAT %")
+
+                field(taxableAmount; Rec."Line Amount")
+                {
+                    Caption = 'Taxable Amount';
+                }
+                field(vatPercent; Rec."VAT %")
                 {
                     Caption = 'VAT %';
                 }
+
             }
         }
     }

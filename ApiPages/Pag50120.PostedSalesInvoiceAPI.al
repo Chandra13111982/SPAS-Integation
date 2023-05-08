@@ -74,6 +74,14 @@ page 50120 "Posted Sales API"
                 {
                     Caption = 'Invoice Date';
                 }
+                part(salesLines; "Posted Sales Invoice Line Api")
+                {
+                    Caption = 'salesLines';
+                    EntityName = 'salesLines';
+                    EntitySetName = 'salesLines';
+                    SubPageLink = "Document No." = Field("No.");
+                    ApplicationArea = All;
+                }
             }
         }
     }
