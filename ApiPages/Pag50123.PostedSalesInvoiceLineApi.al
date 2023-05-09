@@ -20,9 +20,14 @@ page 50123 "Posted Sales Invoice Line Api"
         {
             repeater(General)
             {
+
                 field(documentNo; Rec."Document No.")
                 {
                     Caption = 'Document No.';
+                }
+                field(description; Rec.Description)
+                {
+                    Caption = 'Description.';
                 }
 
                 field(spasId; Rec."Spas Id")
@@ -41,7 +46,7 @@ page 50123 "Posted Sales Invoice Line Api"
                 {
                     Caption = 'No.';
                 }
-                field("type"; Rec."Type")
+                field("type"; ItemType)
                 {
                     Caption = 'Type';
                 }
@@ -93,4 +98,16 @@ page 50123 "Posted Sales Invoice Line Api"
             }
         }
     }
+    trigger OnAfterGetRecord()
+
+    var
+        Item: Record Item;
+    begin
+        Item.Reset();
+        Item.Get(Rec."No.");
+        ItemType := Format(Item.Type);
+    end;
+
+    var
+        ItemType: text;
 }
